@@ -3,27 +3,36 @@ import AccountCard from '../Components/AccountCard.jsx'
 import styles from './Accounts.module.css'
 
 function Accounts() {
-  // const [accounts, setAccounts] = useState([])
+  const [accounts, setAccounts] = useState([])
+  const [accountHoldings, setAccountHoldings] = useState([])
 
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     const [accountsRes, securitiesRes, securityPricesRes, transactionsRes] = await Promise.all([
-  //       fetch('https://localhost:7295/api/accounts'),
-  //     ])
-  //     setAccounts(await accountsRes.json())
-  //     setSecurities(await securitiesRes.json())
-  //     setSecurityPrices(await securityPricesRes.json())
-  //   }
-  //   fetchData()
-  // }, [])
+  useEffect(() => {
+    const fetchData = async () => {
+      const [accountsRes, accountHoldingsRes] = await Promise.all([
+        fetch('https://localhost:7295/api/accounts'),
+        fetch('https://localhost:7295/api/holdings')
+      ])
+      setAccounts(await accountsRes.json())
+      setAccountHoldings(await accountHoldingsRes.json())
+    }
+    fetchData()
+  }, [])
 
-return (
+  return (
     <div className={styles.background}>
-        <AccountCard accountName="ISA" holdings="10,000" />
-        <AccountCard accountName="LISA" holdings="16,000" />
-        <AccountCard accountName="Savings" holdings="8,000" /> 
+      {accounts.map(account => {
+        const holding = accountHoldings.find(h => h.account.accountId === account.accountId).holding;
+
+        return (
+          <AccountCard
+            key={account.accountId}
+            accountName={account.name}
+            holdings={holding}
+          />
+        );
+      })}
     </div>
-  )
+  );
 }
 
 export default Accounts

@@ -4,10 +4,19 @@ body {
 
 .background {
     background-color: #0f172a;
+}
+
+.accountcards {
     width: 100vw;
-    height: 100vh;
+    height: 92.5vh;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
+}
+
+.header {
+    color: white;
+    padding-top: 10px;
+    padding-left: 10px;
 }

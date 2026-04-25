@@ -24,21 +24,23 @@ function Accounts() {
 
   return (
     <div className={styles.background}>
-      {data.accounts.map(account => {
-        const holding = data.holdings.find(h => h.account.accountId === account.accountId)?.holding;
-        const performance = data.performance.find(p => p.account.accountId === account.accountId)?.unrealisedReturns;
+      <h1 className={styles.header}>Portfolio Manager</h1>
+      <div className={styles.accountcards}>
+        {data.accounts.map(account => {
+          const holding = data.holdings.find(h => h.account.accountId === account.accountId)?.holding;
+          const performance = data.performance.find(p => p.account.accountId === account.accountId)?.unrealisedReturns;
 
-        console.log(account, holding, performance)
-
-        return (
-        <AccountCard
-            key={account.accountId}
-            accountName={account.name}
-            holdings={holding}
-            returns={performance}
-        />
-        );
-      })}
+          return (
+          <AccountCard
+              key={account.accountId}
+              accountId={account.accountId}
+              accountName={account.name}
+              holdings={holding}
+              returns={performance}
+          />
+          );
+        })}
+      </div>
     </div>
   );
 }

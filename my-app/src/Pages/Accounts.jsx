@@ -9,7 +9,7 @@ function Accounts() {
     const fetchData = async () => {
       const [accountsRes, accountHoldingsRes, accountPerformanceRes] = await Promise.all([
         fetch('https://localhost:7295/api/accounts'),
-        fetch('https://localhost:7295/api/holdings'),
+        fetch('https://localhost:7295/api/holdings/overall'),
         fetch('https://localhost:7295/api/performance/unrealisedreturns')
       ])
 
@@ -24,8 +24,10 @@ function Accounts() {
 
   return (
     <div className={styles.background}>
-      <h1 className={styles.header}>Portfolio Manager</h1>
-      <div className={styles.accountcards}>
+        <div className={styles.headerblock}>
+            <p className={styles.title}>Portfolio Manager</p>
+        </div>
+        <div className={styles.accountcards}>
         {data.accounts.map(account => {
           const holding = data.holdings.find(h => h.account.accountId === account.accountId)?.holding;
           const performance = data.performance.find(p => p.account.accountId === account.accountId)?.unrealisedReturns;

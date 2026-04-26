@@ -7,15 +7,19 @@ function AccountCard({accountId, accountName, holdings, returns}) {
     const navigate = useNavigate();
 
     return (
-        <>
-            <button onClick={() => navigate(`/accounts/${accountId}`)} className={styles.card}>
-                <h4 className={styles.text}>{accountName}</h4>
-                <div id="account-details">
-                    <h5 className={styles.text}>{holdings}</h5>
-                    <h5 className={styles.text} style={{color}}>{returns}</h5>
+        <button onClick={() => navigate(`/accounts/${accountId}`)} className={styles.card}>
+            <div className={styles.name}>{accountName}</div>
+            <div className={styles.details}>
+                <div className={styles.detail}>
+                    <span className={styles.label}>Holdings</span>
+                    <span className={styles.value}>£{holdings}</span>
                 </div>
-            </button>
-        </>
+                <div className={styles.detail}>
+                    <span className={styles.label}>Returns</span>
+                    <span className={styles.value} style={{ color }}>£{returns}</span>
+                </div>
+            </div>
+        </button>
     )
 }
 

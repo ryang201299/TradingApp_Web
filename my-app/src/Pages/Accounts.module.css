@@ -1,22 +1,32 @@
 body {
-  margin: 0;
+    margin: 0;
 }
 
 .background {
     background-color: #0f172a;
+    min-height: 100vh;
+    padding: 1.5rem;
+    box-sizing: border-box;
+}
+
+.headerblock {
+    max-width: 1000px;
+    margin: 0 auto 1.5rem auto;
+}
+
+.title {
+    font-size: 22px;
+    font-weight: 500;
+    color: #e2e8f0;
+    margin: 0;
 }
 
 .accountcards {
-    width: 100vw;
-    height: 92.5vh;
+    max-width: 1000px;
+    margin: 0 auto;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-}
-
-.header {
-    color: white;
-    padding-top: 10px;
-    padding-left: 10px;
+    padding-top: 2rem;
 }

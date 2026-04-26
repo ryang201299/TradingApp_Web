@@ -1,0 +1,134 @@
+body { margin: 0; }
+
+.background {
+    background-color: #0f172a;
+    min-height: 100vh;
+    padding: 1.5rem;
+    box-sizing: border-box;
+    color: #e2e8f0;
+}
+
+.headerblock {
+    max-width: 1000px;
+    margin: 0 auto 1.5rem auto;
+}
+
+.title {
+    font-size: 22px;
+    font-weight: 500;
+    color: #e2e8f0;
+    margin: 0 0 4px 0;
+}
+
+.subtitle {
+    font-size: 16px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: #64748b;
+    margin: 0;
+}
+
+.content {
+    max-width: 1000px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.topcontent {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+}
+
+.bottomcontent {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+}
+
+.smallbox {
+    background: #1e293b;
+    border: 0.5px solid #334155;
+    border-radius: 10px;
+    padding: 0.875rem 1.25rem;
+}
+
+.largebox {
+    background: #1e293b;
+    border: 0.5px solid #334155;
+    border-radius: 10px;
+    padding: 1rem 1.25rem;
+}
+
+.largebody {
+    overflow-y: auto;
+    max-height: 240px;
+}
+
+.largebody::-webkit-scrollbar { width: 4px; }
+.largebody::-webkit-scrollbar-track { background: transparent; }
+.largebody::-webkit-scrollbar-thumb { background: #334155; border-radius: 4px; }
+
+.boxtitle {
+    font-size: 11px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: #64748b;
+    margin: 0 0 12px 0;
+}
+
+.value {
+    font-size: 28px;
+    font-weight: 500;
+    color: #e2e8f0;
+    margin: 0;
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+}
+
+.table th {
+    font-size: 11px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: #475569;
+    text-align: left;
+    padding: 0 0 8px 0;
+    border-bottom: 0.5px solid #334155;
+}
+
+.table td {
+    color: #cbd5e1;
+    padding: 9px 0;
+    border-bottom: 0.5px solid rgba(51, 65, 85, 0.4);
+}
+
+.table tr:last-child td {
+    border-bottom: none;
+}
+
+.badge {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 500;
+    padding: 2px 7px;
+    border-radius: 4px;
+}
+
+.buy {
+    background: #0d3320;
+    color: #4ade80;
+}
+
+.sell {
+    background: #3b0a0a;
+    color: #f87171;
+}

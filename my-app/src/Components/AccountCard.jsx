@@ -16,7 +16,7 @@ function AccountCard({accountId, accountName, holdings, returns}) {
                 </div>
                 <div className={styles.detail}>
                     <span className={styles.label}>Returns</span>
-                    <span className={styles.value} style={{ color }}>£{returns}</span>
+                    <span className={styles.value} style={{ color }}>{returns}%</span>
                 </div>
             </div>
         </button>

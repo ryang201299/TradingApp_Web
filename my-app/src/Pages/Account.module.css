@@ -47,6 +47,7 @@ body { margin: 0; }
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 12px;
+    flex-wrap: wrap; 
 }
 
 .smallbox {
@@ -131,4 +132,21 @@ body { margin: 0; }
 .sell {
     background: #3b0a0a;
     color: #f87171;
+}
+
+.investButton {
+    flex-basis: 100%;
+    width: fit-content;
+    background-color: #248a49;
+    color: white;
+    border: none;
+    border-radius: 0.5rem;
+    padding: 0.75rem 1.25rem;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.investButton:hover {
+    background-color: #16a34a;
 }

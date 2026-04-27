@@ -1,32 +1,34 @@
 import { useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react'
 import styles from './Account.module.css'
+import OrderModal from '../Components/OrderModal'
 
 function Account() {
     const { id } = useParams();
 
-      const [data, setData] = useState({ account: {}, totalHoldings: {}, holdings: {}, unrealisedReturns: {}, transactions: [] })
-    
-      useEffect(() => {
-        const fetchData = async () => {
-          const [accountRes, totalHoldingsRes, holdingsRes, unrealisedReturnsRes, transactionsRes] = await Promise.all([
-            fetch(`https://tradingappapi.azurewebsites.net/api/accounts/${id}`),
-            fetch(`https://tradingappapi.azurewebsites.net/api/holdings/overall/${id}`),
-            fetch(`https://tradingappapi.azurewebsites.net/api/holdings/${id}`),
-            fetch(`https://tradingappapi.azurewebsites.net/api/performance/unrealisedreturns/${id}`),
-            fetch(`https://tradingappapi.azurewebsites.net/api/transactions/${id}`)
-          ])
-    
-          setData({
+    const [showModal, setShowModal] = useState(false);
+    const [data, setData] = useState({ account: {}, totalHoldings: {}, holdings: {}, unrealisedReturns: {}, transactions: [] })
+
+    useEffect(() => {
+    const fetchData = async () => {
+        const [accountRes, totalHoldingsRes, holdingsRes, unrealisedReturnsRes, transactionsRes] = await Promise.all([
+        fetch(`https://tradingappapi.azurewebsites.net/api/accounts/${id}`),
+        fetch(`https://tradingappapi.azurewebsites.net/api/holdings/overall/${id}`),
+        fetch(`https://tradingappapi.azurewebsites.net/api/holdings/${id}`),
+        fetch(`https://tradingappapi.azurewebsites.net/api/performance/unrealisedreturns/${id}`),
+        fetch(`https://tradingappapi.azurewebsites.net/api/transactions/${id}`)
+        ])
+
+        setData({
             account: await accountRes.json(),
             totalHoldings: await totalHoldingsRes.json(),
             holdings: await holdingsRes.json(),
             unrealisedReturns: await unrealisedReturnsRes.json(),
             transactions: await transactionsRes.json()
-          })
-        }
-        fetchData()
-      }, [])
+        })
+    }
+    fetchData()
+    }, [])
 
     const returns = data.unrealisedReturns.unrealisedReturns;
     const returnsColor = returns > 0 ? '#22c55e' : returns < 0 ? '#ef4444' : '#e2e8f0';
@@ -38,6 +40,7 @@ function Account() {
                 <p className={styles.subtitle}>{data.account.name}</p>
             </div>
             <div className={styles.content}>
+                <OrderModal show={showModal} onClose={() => setShowModal(false)} />
                 <div className={styles.topcontent}>
                     <div className={styles.smallbox}>
                         <p className={styles.boxtitle}>Total Holdings</p>
@@ -103,6 +106,9 @@ function Account() {
                             </table>
                         </div>
                     </div>
+                    <button className={styles.investButton} onClick={() => setShowModal(true)}>
+                        + New Order
+                    </button>                
                 </div>
             </div>
         </div>

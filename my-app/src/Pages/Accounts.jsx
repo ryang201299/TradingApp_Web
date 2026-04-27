@@ -8,9 +8,9 @@ function Accounts() {
   useEffect(() => {
     const fetchData = async () => {
       const [accountsRes, accountHoldingsRes, accountPerformanceRes] = await Promise.all([
-        fetch('https://localhost:7295/api/accounts'),
-        fetch('https://localhost:7295/api/holdings/overall'),
-        fetch('https://localhost:7295/api/performance/unrealisedreturns')
+        fetch('https://tradingappapi.azurewebsites.net/api/accounts'),
+        fetch('https://tradingappapi.azurewebsites.net/api/holdings/overall'),
+        fetch('https://tradingappapi.azurewebsites.net/api/performance/unrealisedreturns')
       ])
 
       setData({
